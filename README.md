@@ -1,4 +1,4 @@
-# EvoltisPruebaTecnica_JonathanAybar (Ver como Code)
+# EvoltisPruebaTecnica - JonathanAybar (Ver como Code)
 Prueba Tecnica Evoltis, utilizando ASP.NET Web Forms y .NET Framework para implementar un CRUD (Create, Read, Update, Delete) para gestionar una entidad llamada "Empleado". Cada empleado debe tener los siguientes atributos: ID, Nombre, Apellido, Correo electrónico y Salario.
 
 Usar como pagina de inicio:
