@@ -133,6 +133,7 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Controls\UCConfirmacion.ascx" />
+    <Content Include="Controls\UCModalError.ascx" />
     <Content Include="Pages\EmpleadosCRUD.aspx" />
     <Content Include="Content\Site.css" />
     <Content Include="favicon.ico" />
@@ -207,6 +208,13 @@
     </Compile>
     <Compile Include="Controls\UCConfirmacion.ascx.designer.cs">
       <DependentUpon>UCConfirmacion.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\UCModalError.ascx.cs">
+      <DependentUpon>UCModalError.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\UCModalError.ascx.designer.cs">
+      <DependentUpon>UCModalError.ascx</DependentUpon>
     </Compile>
     <Compile Include="Pages\EmpleadosCRUD.aspx.cs">
       <DependentUpon>EmpleadosCRUD.aspx</DependentUpon>

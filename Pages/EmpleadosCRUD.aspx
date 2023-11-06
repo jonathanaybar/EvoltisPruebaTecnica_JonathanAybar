@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="EmpleadosCRUD.aspx.cs" Inherits="PruebaTecnicaEvoltis_JonathanAybar.Pages.EmpleadosCRUD" %>
 
-<%@ Register Src="~/Controls/UCConfirmacion.ascx" TagPrefix="UCModalConfirmacion" TagName="UCConfirmacion" %>
+<%@ Register Src="~/Controls/UCConfirmacion.ascx" TagPrefix="UC" TagName="UCConfirmacion" %>
+<%@ Register Src="~/Controls/UCModalError.ascx" TagPrefix="UC" TagName="UCModalError" %>
 
 <asp:Content ID="ContentBody" ContentPlaceHolderID="MainContent" runat="server">
 
@@ -79,11 +80,8 @@
 
                             <div>
                                 <label style="padding-top: 10px;">Salario:</label>
-                                <asp:TextBox ID="txtSalario" runat="server" CssClass="form-control" placeholder="Ingrese salario..." MaxLength="10" onkeypress="return soloNumeros(event)" />
+                                <asp:TextBox ID="txtSalario" runat="server" CssClass="form-control" placeholder="Ingrese salario..." MaxLength="10" onkeypress="return soloNumerosDecimales(event)" />
                                 <asp:Label ID="lblSalarioError" runat="server" CssClass="text-danger" Visible="false">El campo salario es obligatorio.</asp:Label>
-                                <div>
-                                    <asp:RegularExpressionValidator ID="revSalario" runat="server" ControlToValidate="txtSalario" ValidationExpression="^[0-9]*$|^[0-9]+(\.[0-9]{1,2})?$" ErrorMessage="El salario no puede ser negativo." CssClass="text-danger" Display="Dynamic" />
-                                </div>
                             </div>
 
                             <br />
@@ -101,7 +99,10 @@
         </div>
     </div>
 
-    <UCModalConfirmacion:UCConfirmacion runat="server" ID="UCConfirmacion" />
+    <UC:UCConfirmacion runat="server" ID="UCConfirmacion" />
+
+    <UC:UCModalError runat="server" ID="UCModalError" />
+
 
     <script type="text/javascript">
 
@@ -121,6 +122,18 @@
         function soloNumeros(event) {
             var tecla = event.which || event.keyCode;
             if (tecla < 48 || tecla > 57) {
+                event.preventDefault();
+            }
+        }
+
+        function soloNumerosDecimales(event) {
+            var tecla = event.which || event.keyCode;
+
+            if (!((tecla >= 48 && tecla <= 57) || tecla === 44)) {
+                event.preventDefault();               
+            }
+
+            if (tecla === 44 && event.target.value.includes(',')) {
                 event.preventDefault();
             }
         }

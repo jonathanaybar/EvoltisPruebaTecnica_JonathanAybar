@@ -64,6 +64,10 @@ namespace PruebaTecnicaEvoltis_JonathanAybar.Repositories.Implementaciones
                 _contexto.Empleados.Remove(empleado);
                 _contexto.SaveChanges();
             }
+            else
+            {
+                throw new Exception("Objeto null");
+            }
         }
     }
 }

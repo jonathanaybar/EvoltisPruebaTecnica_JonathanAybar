@@ -51,7 +51,7 @@ namespace PruebaTecnicaEvoltis_JonathanAybar.Pages
             }
             catch
             {
-                throw new Exception("Error al buscar empleado.");
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "mostrarModalConfirmacionAgregarScript", "$(function() { mostrarModalError('Error al buscar empleado'); });", true);
             }
         }
         protected void btnAgregarEmpleado_Click(object sender, EventArgs e)
@@ -209,52 +209,70 @@ namespace PruebaTecnicaEvoltis_JonathanAybar.Pages
 
         public void CrearEmpleado()
         {
+            try
+            {
+                Empleado empleado = new Empleado();
 
-            Empleado empleado = new Empleado();
+                empleado.Nombre = this.txtNombre.Text;
+                empleado.Apellido = this.txtApellido.Text;
+                empleado.CorreoElectronico = this.txtCorreoElectronico.Text;
+                empleado.Salario = Convert.ToDecimal(this.txtSalario.Text);
 
-            empleado.Nombre = this.txtNombre.Text;
-            empleado.Apellido = this.txtApellido.Text;
-            empleado.CorreoElectronico = this.txtCorreoElectronico.Text;
-            empleado.Salario = Convert.ToDecimal(this.txtSalario.Text);
+                EmpleadoService.AgregarEmpleado(empleado);
 
-            EmpleadoService.AgregarEmpleado(empleado);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "mostrarModalConfirmacionAgregarScript", "$(function() { mostrarModalConfirmacion('Carga de Empleado'); });", true);
 
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "mostrarModalConfirmacionAgregarScript", "$(function() { mostrarModalConfirmacion('Carga de Empleado'); });", true);
-
-            CargarTablaEmpleados();
-
+                CargarTablaEmpleados();
+            }
+            catch
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "mostrarModalErrorAgregar", "$(function() { mostrarModalError('Error al cargar empleado'); });", true);
+            }
         }
 
         public void EditarEmpleado()
         {
-            Empleado empleado = new Empleado();
+            try
+            {
+                Empleado empleado = new Empleado();
 
-            empleado.ID = Convert.ToInt32(this.hdfIdEmpleado.Value);
-            empleado.Nombre = this.txtNombre.Text;
-            empleado.Apellido = this.txtApellido.Text;
-            empleado.CorreoElectronico = this.txtCorreoElectronico.Text;
-            empleado.Salario = Convert.ToDecimal(this.txtSalario.Text);
+                empleado.ID = Convert.ToInt32(this.hdfIdEmpleado.Value);
+                empleado.Nombre = this.txtNombre.Text;
+                empleado.Apellido = this.txtApellido.Text;
+                empleado.CorreoElectronico = this.txtCorreoElectronico.Text;
+                empleado.Salario = Convert.ToDecimal(this.txtSalario.Text);
 
-            EmpleadoService.ActualizarEmpleado(empleado);
+                EmpleadoService.ActualizarEmpleado(empleado);
 
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "mostrarModalConfirmacionAgregarScript", "$(function() { mostrarModalConfirmacion('Actualizacion de Empleado'); });", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "mostrarModalConfirmacionEditarScript", "$(function() { mostrarModalConfirmacion('Actualizacion de Empleado'); });", true);
 
-            CargarTablaEmpleados();
-
+                CargarTablaEmpleados();
+            }
+            catch
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "mostrarModalErrorEditar", "$(function() { mostrarModalError('Error al modificar empleado'); });", true);
+            }       
         }
 
         public void EliminarEmpleado()
-        {            
-            Empleado empleado = new Empleado();
+        {
+            try
+            {
+                Empleado empleado = new Empleado();
 
-            empleado.ID = Convert.ToInt32(this.hdfIdEmpleado.Value);
+                empleado.ID = Convert.ToInt32(this.hdfIdEmpleado.Value);
 
-            EmpleadoService.EliminarEmpleado(empleado);
+                EmpleadoService.EliminarEmpleado(empleado);
 
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "mostrarModalConfirmacionAgregarScript", "$(function() { mostrarModalConfirmacion('Baja de Empleado'); });", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "mostrarModalConfirmacioneliminarScript", "$(function() { mostrarModalConfirmacion('Baja de Empleado'); });", true);
 
-            CargarTablaEmpleados();
-            MostrarControlesEdicion(true);
+                CargarTablaEmpleados();
+                MostrarControlesEdicion(true);
+            }
+            catch
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "mostrarModalErrorEliminar", "$(function() { mostrarModalError('Error al eliminar empleado'); });", true);
+            }
         }
 
         private bool ValidarFormulario()

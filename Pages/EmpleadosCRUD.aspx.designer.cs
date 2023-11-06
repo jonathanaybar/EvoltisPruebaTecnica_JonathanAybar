@@ -159,15 +159,6 @@ namespace PruebaTecnicaEvoltis_JonathanAybar.Pages
         protected global::System.Web.UI.WebControls.Label lblSalarioError;
 
         /// <summary>
-        /// Control revSalario.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator revSalario;
-
-        /// <summary>
         /// Control btnConfirmarEmpleado.
         /// </summary>
         /// <remarks>
@@ -202,5 +193,14 @@ namespace PruebaTecnicaEvoltis_JonathanAybar.Pages
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::PruebaTecnicaEvoltis_JonathanAybar.Controls.UCConfirmacion UCConfirmacion;
+
+        /// <summary>
+        /// Control UCModalError.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::PruebaTecnicaEvoltis_JonathanAybar.Controls.UCModalError UCModalError;
     }
 }
