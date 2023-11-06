@@ -33,7 +33,7 @@ BEGIN
         [nombre] [varchar](50) NULL,
         [apellido] [varchar](50) NULL,
         [correoelectronico] [varchar](50) NULL,
-        [salario] [decimal](18, 0) NULL,
+        [salario] [decimal](18, 2) NULL,
      CONSTRAINT [PK_Empleado] PRIMARY KEY CLUSTERED 
     (
         [id] ASC
