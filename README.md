@@ -29,16 +29,17 @@ IF NOT EXISTS (SELECT * FROM information_schema.tables WHERE table_name = 'Emple
 BEGIN
     -- Si la tabla no existe, créala
     CREATE TABLE [dbo].[Empleado](
-        [id] [int] IDENTITY(1,1) NOT NULL,
-        [nombre] [varchar](50) NULL,
-        [apellido] [varchar](50) NULL,
-        [correoelectronico] [varchar](50) NULL,
-        [salario] [decimal](18, 2) NULL,
-     CONSTRAINT [PK_Empleado] PRIMARY KEY CLUSTERED 
+    [id] [int] IDENTITY(1,1) NOT NULL,
+    [nombre] [varchar](50) NULL,
+    [apellido] [varchar](50) NULL,
+    [correoelectronico] [varchar](50) NULL,
+    [salario] [decimal](18, 2) NULL,
+    CONSTRAINT [PK_Empleado] PRIMARY KEY CLUSTERED 
     (
         [id] ASC
-    )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-    ) ON [PRIMARY];
+    ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
 END;
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
