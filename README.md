@@ -1,5 +1,5 @@
 # EvoltisPruebaTecnica - JonathanAybar (Ver como Code)
-Prueba Tecnica Evoltis, utilizando ASP.NET Web Forms y .NET Framework para implementar un CRUD (Create, Read, Update, Delete) para gestionar una entidad llamada "Empleado". Cada empleado debe tener los siguientes atributos: ID, Nombre, Apellido, Correo electrónico y Salario.
+Prueba Tecnica Evoltis, utilizando ASP.NET Web Forms y .NET Framework (4.7.2) para implementar un CRUD (Create, Read, Update, Delete) para gestionar una entidad llamada "Empleado". Cada empleado debe tener los siguientes atributos: ID, Nombre, Apellido, Correo electrónico y Salario.
 
 Usar como pagina de inicio:
 ~/Pages/EmpleadosCRUD.aspx
@@ -29,16 +29,16 @@ IF NOT EXISTS (SELECT * FROM information_schema.tables WHERE table_name = 'Emple
 BEGIN
     -- Si la tabla no existe, créala
     CREATE TABLE [dbo].[Empleado](
-        [id] [int] IDENTITY(1,1) NOT NULL,
-        [nombre] [varchar](50) NULL,
-        [apellido] [varchar](50) NULL,
-        [correoelectronico] [varchar](50) NULL,
-        [salario] [decimal](18, 0) NULL,
-     CONSTRAINT [PK_Empleado] PRIMARY KEY CLUSTERED 
+    [id] [int] IDENTITY(1,1) NOT NULL,
+    [nombre] [varchar](50) NULL,
+    [apellido] [varchar](50) NULL,
+    [correoelectronico] [varchar](50) NULL,
+    [salario] [decimal](18, 2) NULL,
+    CONSTRAINT [PK_Empleado] PRIMARY KEY CLUSTERED 
     (
         [id] ASC
-    )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-    ) ON [PRIMARY];
+    ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
 END;
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
